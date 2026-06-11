@@ -33,9 +33,8 @@ def generate_page(basepath, from_path, template_path, dest_path):
 	
 	template = template.replace("{{ Title }}", title)
 	page = template.replace("{{ Content }}", contents)
-	page = page.replace("href=\"/", f"href=\"{basepath}")
-	page = page.replace("src=\"/", f"src=\"{basepath}")
-
+	page = page.replace("href=/", f"href=\"{basepath}")
+	page = page.replace("src=/", f"src={basepath}")
 	
 	split_dest = os.path.split(full_dest)
 	if not os.path.exists(split_dest[0]):
@@ -82,7 +81,9 @@ def generate_pages_recursive(basepath, dir_path_content, template_path, dest_dir
 			template = template.replace("{{ Title }}", title)
 			page = template.replace("{{ Content }}", contents)
 			page = page.replace("href=/", f"href={basepath}")
+			page = page.replace("src=/", f"src={basepath}")
 			page = page.replace("src=\"/", f"src=\"{basepath}")
+			page = page.replace("href=\"/", f"href=\"{basepath}")
 			print(page)
 	
 			dest_file = os.path.join(full_dest,item)
