@@ -1,13 +1,18 @@
 from copy_static_public import *
 from generate_page import *
+import sys
 
 def main():
 	
-	print("Copying the static directory into the public directory...\n")
-	copy_static_public("static", "public")
+	basepath = sys.argv[0]
+	if not basepath:
+		basepath = "/"
+	
+	print("Copying the static directory into the docs directory...\n")
+	copy_static_public("static", "docs")
 	print("Copying done!\n")
 	
-	generate_pages_recursive("content", "template.html", "public")
+	generate_pages_recursive(basepath, "content", "template.html", "docs")
 	
 	
 main()
