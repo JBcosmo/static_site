@@ -81,6 +81,9 @@ def generate_pages_recursive(basepath, dir_path_content, template_path, dest_dir
 	
 			template = template.replace("{{ Title }}", title)
 			page = template.replace("{{ Content }}", contents)
+			page = page.replace("href=/", f"href={basepath}")
+			page = page.replace("src=\"/", f"src=\"{basepath}")
+			print(page)
 	
 			dest_file = os.path.join(full_dest,item)
 	

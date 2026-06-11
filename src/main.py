@@ -4,7 +4,7 @@ import sys
 
 def main():
 	
-	basepath = sys.argv[0]
+	basepath = sys.argv[1]
 	if not basepath:
 		basepath = "/"
 	
